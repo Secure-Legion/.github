@@ -99,6 +99,35 @@ Your cryptocurrency wallet isn't just for money—it's your messaging identity.
 
 No evidence left behind. No messages waiting to be delivered. No metadata to analyze.
 
+### ○ Text-Only Messaging
+
+**Pure text. Zero compromise.**
+
+Messages are strictly text-based to prevent:
+- **Malware distribution** — No executables, scripts, or file attachments
+- **Exploit vectors** — No image parsing vulnerabilities or media file attacks
+- **Content-based abuse** — Prevents harassment through explicit images
+- **Phishing** — No deceptive links or embedded content
+
+**Why text-only matters for security:**
+
+Traditional messengers allow images, videos, files, and links—each creating attack surfaces:
+- Malicious PDFs with embedded exploits
+- Images with hidden payloads (steganography)
+- Videos that exploit codec vulnerabilities
+- Documents with macro viruses
+- Links to phishing sites
+
+**Secure Legion eliminates these vectors entirely.** Pure text communication means:
+- ✓ No file parsing vulnerabilities
+- ✓ No media codec exploits
+- ✓ Minimal attack surface
+- ✓ Predictable, auditable codebase
+- ✓ Lower battery consumption
+- ✓ Faster message transmission
+
+For file sharing, users can exchange encrypted file hashes and retrieve via separate secure channels—keeping the messaging layer clean and secure.
+
 ---
 
 ## ○ How It Works (Simple Version)
@@ -165,6 +194,7 @@ Relay can't see who sent it, who receives it, or what it says. Just encrypted da
 - ✓ **Cross-chain support** — Works with multiple blockchains
 - ✓ **Open source** — Fully auditable code
 - ✓ **No proprietary protocols** — Everything is documented
+- ✓ **Text-only messaging** — Pure text communication prevents malware and exploits
 
 ---
 
@@ -376,6 +406,17 @@ Secure Legion exists because **privacy is a human right**, not a luxury. We beli
 - ▸ Privacy technology should empower, not exploit
 
 **We're building the messenger we wish existed when we needed it most.**
+
+---
+
+<p align="center">
+  <strong>Secure Legion — Private by Design</strong><br>
+  No servers. No metadata. No compromises.
+</p>
+
+<p align="center">
+  ◆ Star this repo if you believe in privacy ◆
+</p>
 
 ---
 
