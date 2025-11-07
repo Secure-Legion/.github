@@ -420,11 +420,4 @@ Secure Legion exists because **privacy is a human right**, not a luxury. We beli
 
 ---
 
-<p align="center">
-  <strong>Secure Legion — Private by Design</strong><br>
-  No servers. No metadata. No compromises.
-</p>
-
-<p align="center">
-  ◆ Star this repo if you believe in privacy ◆
-</p>
+CA: GFJbQ7WDQry73iTaGkJcXKjvi1ViFTFmHSENgz92jFPP
