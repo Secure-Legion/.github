@@ -362,7 +362,7 @@ You shouldn't if [X] meets your threat model! Secure Legion is for people who ne
 ## ◆ Contact
 
 - **Website**: [www.securelegion.com]
-- **Email**: [info#securelegion.com]
+- **Email**: [info@securelegion.com]
 - **Twitter/X**: [https://x.com/SecureLegion]  
 - **GitHub Issues**: [Right Here](../../issues)
 
