@@ -237,15 +237,13 @@ Relay can't see who sent it, who receives it, or what it says. Just encrypted da
 - [✓] Complete architecture design
 - [✓] Security model documentation
 - [✓] Technical feasibility analysis
-- [ ] Core cryptographic library
-- [ ] Blockchain integration (Solana + IPFS)
-- [ ] Relay protocol implementation
-- [ ] Android app (relay mode)
-- [ ] iOS app (relay mode)  
-- [ ] Ping-Pong Wake System
+- [✓] Core cryptographic library
+- [✓] Blockchain integration (Solana + IPFS)
+- [✓] Relay protocol implementation
+- [✓] Ping-Pong Wake System
 - [ ] Security audit
-- [ ] Public beta launch
-
+- [ ] Public beta launch (Android app)
+- [ ] iOS app (relay mode)
 ---
 
 ## ◈ Why Open Source?
@@ -363,10 +361,9 @@ You shouldn't if [X] meets your threat model! Secure Legion is for people who ne
 
 ## ◆ Contact
 
-- **Website**: [Coming Soon]
-- **Email**: [Coming Soon]
-- **Twitter/X**: [Coming Soon]  
-- **Discord**: [Coming Soon]
+- **Website**: [www.securelegion.com]
+- **Email**: [info#securelegion.com]
+- **Twitter/X**: [https://x.com/SecureLegion]  
 - **GitHub Issues**: [Right Here](../../issues)
 
 **Security Disclosures**: Please report vulnerabilities responsibly via [SECURITY.md](SECURITY.md)
