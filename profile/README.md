@@ -1,4 +1,4 @@
-# ◈ Secure Legion
+# ◈ Secure Legion LLC
 
 **Private by Design • Serverless • Blockchain Integrated**
 
@@ -355,16 +355,19 @@ You shouldn't if [X] meets your threat model! Secure Legion is for people who ne
 - ○ **Spread awareness** of metadata privacy issues
 - ▸ **Policy advocacy** — support strong encryption
 - ◈ **Donations** — support development (details coming soon)
-- ◆ **Partnerships** — connect us with organizations that need this
+  
 
 ---
 
 ## ◆ Contact
 
-- **Website**: [www.securelegion.com]
-- **Email**: [info@securelegion.com]
+- **Website**: [www.securelegion.org]
+- **Email**: [info@securelegion.org]
 - **Twitter/X**: [https://x.com/SecureLegion]  
 - **GitHub Issues**: [Right Here](../../issues)
+- **Address**: [1309 Coffeen Avenue STE 1200
+Sheridan Wyoming 82801]
+
 
 **Security Disclosures**: Please report vulnerabilities responsibly via [SECURITY.md](SECURITY.md)
 
@@ -372,7 +375,7 @@ You shouldn't if [X] meets your threat model! Secure Legion is for people who ne
 
 ## ◇ License
 
-[License will be determined — likely AGPL-3.0 or similar copyleft license to ensure derivatives remain open source]
+PolyForm Noncommercial License 1.0.0
 
 ---
 
@@ -407,7 +410,7 @@ Secure Legion exists because **privacy is a human right**, not a luxury. We beli
 ---
 
 <p align="center">
-  <strong>Secure Legion — Private by Design</strong><br>
+  <strong>Secure Legion LLC — Private by Design</strong><br>
   No servers. No metadata. No compromises.
 </p>
 
