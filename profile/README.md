@@ -16,7 +16,7 @@ Even the most secure messaging apps today have a dirty secret: **they protect yo
 
 **What's metadata?** It's everything *except* the content of your messages:
 - Who you talk to (your social network)
-- When you communicate 
+- When you communicate
 - How often you message someone
 - Your IP address and location
 - Your contact list
@@ -54,30 +54,32 @@ You ←→ Recipient (nobody in the middle)
 
 **No servers** know:
 - Who you're messaging
-- When you're messaging  
+- When you're messaging
 - Where you're messaging from
 - Who's in your contact list
 - Your communication patterns
 
-### ◈ Two Security Modes: You Choose
+### ◈ Ping-Pong Wake Protocol
 
-#### ▸ **Maximum Security Mode** (Ping-Pong Wake)
-Messages only deliver when recipient is online AND authenticates. If their phone is seized, your message never arrives.
+**Messages only deliver when the recipient is online AND authenticates with biometric/PIN.** If their device is seized or offline, your message never arrives—ensuring zero failed deliveries and absolute sender control.
+
+**How it works:**
+1. **Wake Request**: Your device sends an encrypted "ping" over Tor
+2. **Authentication**: Recipient must unlock their device to acknowledge
+3. **Direct Delivery**: Message transmits peer-to-peer only after confirmation
+4. **4-Tier ACK Tracking**: PING_ACK → PONG_ACK → MESSAGE_ACK → TAP_ACK
+5. **Auto-Cleanup**: Messages delete after reading (or on timer)
+
+**Why this matters:**
+- No messages sitting on servers waiting to be compromised
+- Active consent required for every message received
+- Complete visibility into delivery status at each step
+- If recipient's device is seized, your undelivered message never arrives
 
 **Perfect for:**
-- Sensitive sources
-- High-risk conversations
+- Sensitive sources and high-risk conversations
 - When absolute security matters more than convenience
-
-#### ▹ **Balanced Mode** (Encrypted Relays)
-Messages go through anonymous relays (like Tor) and deliver when recipient is next online. Still fully encrypted, still no metadata.
-
-**Perfect for:**
-- Everyday secure messaging
-- When you need reliable delivery
-- Normal contacts
-
-**You decide per contact.** Mark your journalist source as "maximum security" and your friend as "balanced."
+- Anyone who needs guaranteed metadata-free communication
 
 ### ◆ Your Wallet = Your Identity
 
@@ -99,34 +101,28 @@ Your cryptocurrency wallet isn't just for money—it's your messaging identity.
 
 No evidence left behind. No messages waiting to be delivered. No metadata to analyze.
 
-### ○ Text-Only Messaging
+### ○ Voice Messages Over P2P
 
-**Pure text. Zero compromise.**
+**Send encrypted voice recordings directly peer-to-peer.**
 
-Messages are strictly text-based to prevent:
-- **Malware distribution** — No executables, scripts, or file attachments
-- **Exploit vectors** — No image parsing vulnerabilities or media file attacks
-- **Content-based abuse** — Prevents harassment through explicit images
-- **Phishing** — No deceptive links or embedded content
+SecureLegion supports voice messages (up to ~3 minutes) transmitted via the same Ping-Pong Wake protocol:
+- **AAC format**: High-quality audio, efficient compression
+- **Same security model**: Voice only transmits after recipient authenticates
+- **No servers involved**: Voice data never touches third-party infrastructure
+- **Encrypted end-to-end**: XChaCha20-Poly1305 AEAD for voice payloads
 
-**Why text-only matters for security:**
+**Why voice over P2P matters:**
+- Traditional messengers store voice messages on servers (metadata exposure)
+- SecureLegion voice messages transit peer-to-peer only when recipient confirms availability
+- Prevents voice message "inboxes" that can be surveilled or subpoenaed
+- Lower attack surface than video or arbitrary file sharing
 
-Traditional messengers allow images, videos, files, and links—each creating attack surfaces:
-- Malicious PDFs with embedded exploits
-- Images with hidden payloads (steganography)
-- Videos that exploit codec vulnerabilities
-- Documents with macro viruses
-- Links to phishing sites
+**Note**: SecureLegion intentionally does NOT support:
+- File attachments (prevents malware distribution)
+- Images/videos (prevents exploit vectors in media codecs)
+- Arbitrary documents (prevents phishing and embedded exploits)
 
-**Secure Legion eliminates these vectors entirely.** Pure text communication means:
-- ✓ No file parsing vulnerabilities
-- ✓ No media codec exploits
-- ✓ Minimal attack surface
-- ✓ Predictable, auditable codebase
-- ✓ Lower battery consumption
-- ✓ Faster message transmission
-
-For file sharing, users can exchange encrypted file hashes and retrieve via separate secure channels—keeping the messaging layer clean and secure.
+This minimalist approach keeps the attack surface small and the codebase auditable.
 
 ---
 
@@ -139,62 +135,59 @@ For file sharing, users can exchange encrypted file hashes and retrieve via sepa
 3. Your card is encrypted—even the blockchain can't read it
 4. No central directory = no list of all users
 
-### Sending Messages
+### Sending Messages (Ping-Pong Wake Protocol)
 
-**Maximum Security Mode:**
 ```
-1. You: "Hey, ready to receive?" (encrypted ping)
-2. Them: *unlocks phone, sees notification*
-3. Them: "Ready!" (encrypted pong)
-4. You: *sends encrypted message directly*
-5. Both: *messages deleted after reading*
-```
-
-Nobody in the middle. Messages never sit on a server.
-
-**Balanced Mode:**
-```
-1. You: *sends encrypted message to anonymous relay*
-2. Relay: *stores encrypted blob (can't read it)*
-3. Them: *retrieves when online*
-4. Relay: *deletes message*
+1. You: "Hey, ready to receive?" (encrypted PING over Tor)
+2. Them: *unlocks phone, sees notification, authenticates*
+3. Them: "Ready!" (encrypted PONG over Tor)
+4. You: *sends encrypted message/voice directly peer-to-peer*
+5. Them: *receives message, sends MESSAGE_ACK*
+6. Them: *opens message, sends TAP_ACK (read receipt)*
 ```
 
-Relay can't see who sent it, who receives it, or what it says. Just encrypted data.
+**Nobody in the middle. Messages never sit on a server.**
+
+**4-Tier ACK System provides granular tracking:**
+- **PING_ACK**: Recipient's Tor hidden service is reachable
+- **PONG_ACK**: Recipient authenticated and confirmed availability
+- **MESSAGE_ACK**: Message delivered to recipient's device
+- **TAP_ACK**: Recipient opened and viewed the message
 
 ### The Technology Stack
 
-- **Blockchain**: Solana (fast & cheap) + IPFS for decentralized storage
-- **Encryption**: Military-grade XChaCha20 + Ed25519 signatures
+- **Blockchain**: Solana (fast & cheap) + IPFS via Crust Network for decentralized storage
+- **Encryption**: Military-grade XChaCha20-Poly1305 + Ed25519 signatures + X25519 ECDH
 - **Anonymity**: All traffic through Tor network
-- **Hardware Security**: Keys in StrongBox (Android) / Secure Enclave (iOS)
+- **Hardware Security**: Keys in StrongBox (Android)
 
 ---
 
 ## ▣ Features
 
 ### ◈ Core Security
-- ✓ **End-to-end encryption** for all messages
+- ✓ **End-to-end encryption** for all messages (XChaCha20-Poly1305)
 - ✓ **Zero metadata exposure** — no servers track anything
-- ✓ **Forward secrecy** — past messages safe even if keys compromised
+- ✓ **Forward secrecy** — ephemeral X25519 key exchange
 - ✓ **No phone numbers** or personal identifiers required
 - ✓ **Decentralized** — no company to compel or hack
+- ✓ **Hardware key storage** — Android StrongBox/TEE
 
-### ◆ Smart Features
-- ✓ **Contact tiers** — Set security level per contact
-- ✓ **Automatic mode switching** — Tries direct, falls back to relay
+### ◆ Messaging Features
+- ✓ **Ping-Pong Wake Protocol** — Messages only send when recipient confirms
+- ✓ **4-tier ACK system** — Track delivery at every step (PING/PONG/MESSAGE/TAP)
+- ✓ **Voice messages** — AAC audio up to ~3 minutes over P2P
+- ✓ **Self-destruct timers** — DOD 5220.22-M secure deletion
 - ✓ **Duress protection** — Panic PIN wipes everything
-- ✓ **Blockchain identity** — Find contacts without central server
-- ✓ **Multi-device support** — Use same identity on multiple devices
-- ✓ **Offline messages** — Compose while offline, sends when connected
+- ✓ **Blockchain identity** — Wallet-based, no registration
+- ✓ **Screenshot protection** — Prevents screen capture and recording
+- ✓ **Auto-lock** — Configurable inactivity timeout (30s-10min)
 
 ### ◇ Power User Features
 - ✓ **Burner identities** — Create disposable identities
-- ✓ **Self-hosted relays** — Run your own relay nodes
-- ✓ **Cross-chain support** — Works with multiple blockchains
 - ✓ **Open source** — Fully auditable code
 - ✓ **No proprietary protocols** — Everything is documented
-- ✓ **Text-only messaging** — Pure text communication prevents malware and exploits
+- ✓ **Tor bridges** — Snowflake, obfs4, meek for censorship circumvention
 
 ---
 
@@ -205,7 +198,7 @@ Relay can't see who sent it, who receives it, or what it says. Just encrypted da
 - No server logs to subpoena
 - Duress PIN if source is compromised
 
-### ◇ Activists & Organizers  
+### ◇ Activists & Organizers
 - Coordinate without revealing your network
 - No metadata for surveillance
 - Works in censored networks (via Tor)
@@ -229,26 +222,30 @@ Relay can't see who sent it, who receives it, or what it says. Just encrypted da
 
 ## ▣ Project Status
 
-**Current Phase:** Architecture & Design ✓  
-**Next Phase:** MVP Development ▸
+**Current Phase:** Public Beta (v0.2.x) ✓
+**Next Phase:** Stability & Performance Improvements ▸
 
 ### Roadmap
 
 - [✓] Complete architecture design
 - [✓] Security model documentation
-- [✓] Technical feasibility analysis
-- [✓] Core cryptographic library
-- [✓] Blockchain integration (Solana + IPFS)
-- [✓] Relay protocol implementation
-- [✓] Ping-Pong Wake System
-- [ ] Security audit
-- [ ] Public beta launch (Android app)
-- [ ] iOS app (relay mode)
+- [✓] Core cryptographic library (Rust JNI)
+- [✓] Blockchain integration (Solana + Crust Network IPFS)
+- [✓] Ping-Pong Wake Protocol implementation
+- [✓] Voice message support over P2P
+- [✓] 4-tier ACK delivery tracking
+- [✓] Public beta launch (Android app)
+- [▸] Security audit (ongoing)
+- [▸] Performance optimizations
+- [▸] UI/UX improvements
+- [ ] Group messaging
+- [ ] Desktop client
+
 ---
 
 ## ◈ Why Open Source?
 
-**Trust through transparency.** 
+**Trust through transparency.**
 
 Security products that ask for your trust need to prove they deserve it. Secure Legion is open source so:
 
@@ -266,18 +263,18 @@ Security products that ask for your trust need to prove they deserve it. Secure 
 
 We believe in honest communication about security limitations:
 
-✗ **Compromised devices**: If your phone has malware, no app can protect you  
-✗ **Physical access**: Someone with your unlocked phone can see your messages  
-✗ **Screenshots**: We can't prevent someone from photographing the screen  
-✗ **Endpoint attacks**: Attacks on your device itself are outside our threat model  
-✗ **Social engineering**: Technology can't fix human vulnerabilities  
+✗ **Compromised devices**: If your phone has malware, no app can protect you
+✗ **Physical access**: Someone with your unlocked phone can see your messages
+✗ **Screenshots**: We prevent screen capture, but can't stop cameras pointed at your screen
+✗ **Endpoint attacks**: Attacks on your device itself are outside our threat model
+✗ **Social engineering**: Technology can't fix human vulnerabilities
 
 **What we DO protect:**
-✓ Network surveillance and metadata collection  
-✓ Server compromises (because there are no servers with your data)  
-✓ Traffic analysis  
-✓ Social graph exposure  
-✓ Location tracking through messaging activity  
+✓ Network surveillance and metadata collection
+✓ Server compromises (because there are no servers with your data)
+✓ Traffic analysis
+✓ Social graph exposure
+✓ Location tracking through messaging activity
 
 Know your threat model. Use the right tool for your situation.
 
@@ -288,7 +285,7 @@ Know your threat model. Use the right tool for your situation.
 Want the technical details? Check out our documentation:
 
 - ▸ [**Architecture Documentation**](docs/architecture.md) — Complete technical specification
-- ◈ [**Security Model**](docs/security.md) — Threat model and security guarantees  
+- ◈ [**Security Model**](docs/security.md) — Threat model and security guarantees
 - ○ [**Ping-Pong Protocol**](docs/pingpong.md) — How our novel wake system works
 - ◇ [**Blockchain Integration**](docs/blockchain.md) — Decentralized identity design
 - ▣ [**Developer Guide**](docs/development.md) — Contributing to Secure Legion
@@ -299,7 +296,7 @@ Want the technical details? Check out our documentation:
 
 ### Is this like Signal?
 
-Signal is excellent for message content encryption, but it runs centralized servers that see metadata. Secure Legion eliminates the servers entirely.
+Signal is excellent for message content encryption, but it runs centralized servers that see metadata. Secure Legion eliminates the servers entirely with direct peer-to-peer communication over Tor.
 
 ### Is this like Session?
 
@@ -315,7 +312,7 @@ The wallet key serves as your messaging identity. This means:
 
 ### Does this cost money?
 
-Basic usage costs fractions of a cent (for blockchain directory updates). Optional: pay relays for priority delivery, but community relays are free.
+Basic usage costs fractions of a cent (for blockchain directory updates).
 
 ### What about group chats?
 
@@ -323,7 +320,7 @@ Coming in future version. We're focusing on perfect 1-on-1 messaging first.
 
 ### Can I really trust this?
 
-The code is open source. Get a security audit from a firm you trust. Run your own relays. Verify the cryptography. Don't trust—verify.
+The code is open source. Get a security audit from a firm you trust. Verify the cryptography. Don't trust—verify.
 
 ### Why should I use this instead of [X]?
 
@@ -339,10 +336,10 @@ You shouldn't if [X] meets your threat model! Secure Legion is for people who ne
 - ○ **Suggest features** that would help your use case
 - ▸ **Report issues** if you find problems
 
-### For Developers  
+### For Developers
 - ◈ **Contribute code** (see [CONTRIBUTING.md](CONTRIBUTING.md))
 - ◆ **Security review** — help us find vulnerabilities
-- ◇ **Documentation** — help make this accessible  
+- ◇ **Documentation** — help make this accessible
 - ○ **Testing** — ensure reliability across platforms
 
 ### For Security Researchers
@@ -355,7 +352,7 @@ You shouldn't if [X] meets your threat model! Secure Legion is for people who ne
 - ○ **Spread awareness** of metadata privacy issues
 - ▸ **Policy advocacy** — support strong encryption
 - ◈ **Donations** — support development (details coming soon)
-  
+
 
 ---
 
@@ -363,7 +360,7 @@ You shouldn't if [X] meets your threat model! Secure Legion is for people who ne
 
 - **Website**: [www.securelegion.org]
 - **Email**: [info@securelegion.org]
-- **Twitter/X**: [https://x.com/SecureLegion]  
+- **Twitter/X**: [https://x.com/SecureLegion]
 - **GitHub Issues**: [Right Here](../../issues)
 - **Address**: [1309 Coffeen Avenue STE 1200
 Sheridan Wyoming 82801]
@@ -383,10 +380,9 @@ PolyForm Noncommercial License 1.0.0
 
 Secure Legion builds on the shoulders of giants:
 
-- **Signal Protocol** — Pioneering end-to-end encryption
-- **Tor Project** — Anonymous communication infrastructure  
+- **Tor Project** — Anonymous communication infrastructure
 - **Solana Foundation** — Fast, affordable blockchain
-- **IPFS** — Decentralized storage
+- **IPFS/Crust Network** — Decentralized storage
 - **All privacy researchers** — Whose work makes this possible
 
 Special thanks to the journalists, activists, and whistleblowers who inspired this project by risking everything to expose truth.
@@ -400,7 +396,7 @@ Special thanks to the journalists, activists, and whistleblowers who inspired th
 Secure Legion exists because **privacy is a human right**, not a luxury. We believe:
 
 - ○ Everyone deserves private communication
-- ◆ Security tools should be open and auditable  
+- ◆ Security tools should be open and auditable
 - ◇ Different threats need different tools
 - ◈ Users should understand their security, not just trust it
 - ▸ Privacy technology should empower, not exploit
