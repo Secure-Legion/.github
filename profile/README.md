@@ -1,8 +1,10 @@
-# ◈ Secure
+# ◈ Secure 
 
-**Serverless • Post-Quantum Cryptography • Private Payments • Metadata Resistant • Patent Pending Technology**
+Build on Solana 🤍
 
-A truly serverless messaging system that eliminates metadata exposure. While other secure messengers protect your messages, Secure protects your identity, communication patterns, and social network from surveillance. No application servers know who you talk to, when you communicate, or where you are.
+**Serverless • Post-Quantum Cryptography • Private Payments • Metadata Resistant • Patent Pending Technology • Tor Network**
+
+A truly serverless P2P E2EE messaging system that eliminates metadata exposure. While other secure messengers protect your messages, Secure protects your identity, communication patterns, and social network from surveillance. No application servers know who you talk to, when you communicate, or where you are.
 
 > "No servers. Metadata resistance. No compromises."
 
