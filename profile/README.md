@@ -1,6 +1,6 @@
 # ◈ Secure 
 
-Build on Solana 🤍
+🤍 Build on Solana
 
 **Serverless • Post-Quantum Cryptography • Private Payments • Metadata Resistant • Patent Pending Technology • Tor Network**
 
