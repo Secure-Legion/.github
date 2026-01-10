@@ -559,10 +559,8 @@ Secure exists because **privacy is a human right**, not a luxury. We believe:
 
 **Donate to support privacy technology:**
 
-- **Solana (SOL)**: `7i3oi9YFquREM3LgD6KgAxxBsoSooSBRxwKKnKLLKJY2`
-- **Ethereum (ETH)**: `0xbD12aF5bf24ded147FBAae1F5795CE9357131F8B`
-- **Bitcoin (BTC)**: `bc1q3wdxa7tw6nr93r2tmrg488h4k6jrsj8hk5nzxd`
+- **Solana (SOL)**: `7i3oi9YFquREM3LgD6KgAxxBsoSooSBRxwKKnKLLKJY2` - **Bitcoin (BTC)**: `bc1q3wdxa7tw6nr93r2tmrg488h4k6jrsj8hk5nzxd` 
+- **Ethereum (ETH)**: `0xbD12aF5bf24ded147FBAae1F5795CE9357131F8B` 
 
 ---
-
-**CA**: GFJbQ7WDQry73iTaGkJcXKjvi1ViFTFmHSENgz92jFPP
+                                                                Powered by $SECURE 
