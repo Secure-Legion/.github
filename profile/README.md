@@ -1,6 +1,19 @@
-# ◈ Secure 
+# ◈ Secure
 
 🤍 Built on Solana
+
+<p align="center">
+  <img src="https://img.shields.io/badge/platform-Android-34A853?style=flat-square&logo=android&logoColor=white" alt="Android" />
+  <img src="https://img.shields.io/badge/language-Kotlin%20%7C%20Java%20%7C%20Rust-F46623?style=flat-square&logo=kotlin&logoColor=white" alt="Kotlin | Java | Rust" />
+  <img src="https://img.shields.io/badge/license-PolyForm%20Noncommercial-blue?style=flat-square" alt="License" />
+  <img src="https://img.shields.io/badge/website-securelegion.org-5AF5F5?style=flat-square" alt="Website" />
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/Tor-Hidden%20Services-7D4698?style=flat-square&logo=torproject&logoColor=white" alt="Tor" />
+  <img src="https://img.shields.io/badge/Post--Quantum-ML--KEM--1024-FF6F00?style=flat-square" alt="Post-Quantum" />
+  <img src="https://img.shields.io/badge/Solana-Wallet-9945FF?style=flat-square&logo=solana&logoColor=white" alt="Solana" />
+  <img src="https://img.shields.io/badge/Zcash-Shielded-F4B728?style=flat-square&logo=zcash&logoColor=black" alt="Zcash" />
+</p>
 
 **Serverless • Post-Quantum Cryptography • Private Payments • Metadata Resistant • Patent Pending Technology • Tor Network**
 
@@ -75,9 +88,9 @@ You ←→ Tor Network ←→ Recipient
 
 Three separate Tor hidden services provide complete anonymity:
 
-1. **Friend Discovery .onion** - Shared via QR code (offline, no network exposure)
-2. **Friend-Request .onion** - Three-phase encrypted contact exchange
-3. **Messaging .onion** - Direct peer-to-peer encrypted messaging
+1. **Friend-Request .onion** - Three-phase encrypted contact exchange
+2. **Messaging .onion** - Direct peer-to-peer encrypted messaging
+3. **Voice Calling .onion** - Encrypted peer-to-peer voice calls
 
 All .onion addresses are deterministically generated from your seed phrase—your identity is self-sovereign and portable.
 
@@ -278,7 +291,7 @@ This minimalist approach keeps the attack surface small and the codebase auditab
 - ✓ **Metadata resistant** — No servers track who, when, or where
 - ✓ **Hardware key storage** — Android StrongBox/TEE
 - ✓ **No phone numbers** — Wallet-based identity, no registration
-- ✓ **Triple .onion architecture** — Friend discovery, requests, messaging
+- ✓ **Triple .onion architecture** — Friend requests, messaging, voice calling
 
 ### ◆ Messaging Features
 - ✓ **Ping-Pong Wake Protocol** — Messages only send when recipient confirms
