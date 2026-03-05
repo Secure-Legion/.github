@@ -216,8 +216,8 @@ No evidence. No queued messages. No metadata to analyze.
 
 **Send encrypted voice recordings directly peer-to-peer.**
 
-Secure supports voice messages (up to ~3 minutes) transmitted via the same Ping-Pong Wake protocol:
-- **AAC format**: High-quality audio, efficient compression
+Secure supports voice messages transmitted via the same Ping-Pong Wake protocol:
+- **Opus codec**: High-quality audio (48kHz, 32kbps CBR), optimized for Tor bandwidth
 - **Same security model**: Voice only transmits after recipient authenticates
 - **No servers involved**: Voice data never touches third-party infrastructure
 - **Encrypted end-to-end**: XChaCha20-Poly1305 AEAD for voice payloads
@@ -226,14 +226,6 @@ Secure supports voice messages (up to ~3 minutes) transmitted via the same Ping-
 - Traditional messengers store voice messages on servers (metadata exposure)
 - Secure voice messages transit peer-to-peer only when recipient confirms availability
 - Prevents voice message "inboxes" that can be surveilled or subpoenaed
-- Lower attack surface than video or arbitrary file sharing
-
-**Note**: Secure intentionally does NOT support:
-- File attachments (prevents malware distribution)
-- Images/videos (prevents exploit vectors in media codecs)
-- Arbitrary documents (prevents phishing and embedded exploits)
-
-This minimalist approach keeps the attack surface small and the codebase auditable.
 
 ---
 
@@ -295,7 +287,11 @@ This minimalist approach keeps the attack surface small and the codebase auditab
 - ✓ **Ping-Pong Wake Protocol** — Messages only send when recipient confirms
 - ✓ **TAP Heartbeat System** — Bidirectional online presence with ACH state machine
 - ✓ **4-tier ACK tracking** — PING_ACK → PONG_ACK → MESSAGE_ACK → TAP_ACK
-- ✓ **Voice messages** — AAC audio up to ~3 minutes over P2P
+- ✓ **Voice messages** — Opus codec over P2P
+- ✓ **Image sharing** — Encrypted image transfer with EXIF stripping
+- ✓ **Stickers & GIFs** — Local animated media packs
+- ✓ **Reactions** — Emoji reactions on messages
+- ✓ **Voice calls** — End-to-end encrypted calling over Tor (Opus, 48kHz)
 - ✓ **Self-destruct timers** — DOD 5220.22-M secure deletion
 - ✓ **Duress protection** — Panic PIN wipes everything instantly
 - ✓ **Screenshot protection** — Prevents screen capture
@@ -367,12 +363,16 @@ This minimalist approach keeps the attack surface small and the codebase auditab
 - [✓] ACH state machine
 - [✓] Secure Pay integration
 - [✓] Voice messages over P2P
+- [✓] Image sharing over P2P
+- [✓] Stickers & GIF packs (local)
+- [✓] Emoji reactions
+- [✓] Voice calls over Tor (Opus)
+- [✓] In-process Arti Tor (Rust-native, no C Tor binary)
 - [✓] Tor VPN mode
 - [✓] Public beta launch (Android app)
-- [▸] Security audit (ongoing)
+- [▸] CRDT group messaging (in progress)
+- [▸] Security audit (planned)
 - [▸] Performance optimizations
-- [▸] UI/UX improvements
-- [ ] Group messaging
 - [ ] Desktop client
 
 ---
@@ -450,7 +450,7 @@ The app is free. Messaging has no costs (peer-to-peer over Tor). Payments use st
 
 ### What about group chats?
 
-Coming in future version. We're focusing on perfect 1-on-1 messaging with post-quantum security first.
+CRDT-based group messaging is actively in development. It uses conflict-free replicated data types for decentralized consensus — no server needed to coordinate group state.
 
 ### Can I really trust this?
 
