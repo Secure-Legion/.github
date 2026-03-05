@@ -418,10 +418,10 @@ We believe in honest communication about security limitations:
 
 Want the technical details? Check out our documentation:
 
-- ▸ [**Main Repository**](https://github.com/Secure-Legion/secure-legion-android) — Complete source code
-- ◈ [**Provisional Patent**](https://securelegion.org/patent) — Patent-pending technology
+- ▸ [**Android App**](https://github.com/Secure-Legion/android) — Kotlin/Java Android application
+- ◈ [**Crypto Library**](https://github.com/Secure-Legion/securelegion-crypto) — Open-source Rust cryptography, CRDT, Tor/Arti, audio, wallet
 - ○ [**Download Beta**](https://securelegion.org/download) — Try it yourself
-- ◇ [**Documentation**](https://securelegion.org/architecture) — Technical architecture
+- ◇ [**Documentation**](https://securelegion.org/docs) — Technical architecture
 - ▣ [**Roadmap**](https://securelegion.org/roadmap) — Development timeline
 
 ---
