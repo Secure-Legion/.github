@@ -456,9 +456,9 @@ CRDT-based group messaging is actively in development. It uses conflict-free rep
 
 The code is open source. Get a security audit from a firm you trust. Verify the cryptography. Don't trust—verify.
 
-### Why should I use this instead of [X]?
+### Why should I use this instead of Signal, Session, or Briar?
 
-You shouldn't if [X] meets your threat model! Secure is for people who need **metadata resistance and post-quantum security**. That's not everyone. Use the right tool for your needs.
+If those apps meet your threat model, use them! Secure is for people who need **metadata resistance and post-quantum security** together — no servers that can log who you talk to, and encryption that survives future quantum computers. That's not everyone. Use the right tool for your needs.
 
 ---
 
