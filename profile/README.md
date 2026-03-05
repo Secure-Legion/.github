@@ -1,7 +1,5 @@
 # ◈ Secure
 
-🤍 Built on Solana
-
 <p align="center">
   <img src="https://img.shields.io/badge/platform-Android-34A853?style=flat-square&logo=android&logoColor=white" alt="Android" />
   <img src="https://img.shields.io/badge/language-Kotlin%20%7C%20Java%20%7C%20Rust-F46623?style=flat-square&logo=kotlin&logoColor=white" alt="Kotlin | Java | Rust" />
